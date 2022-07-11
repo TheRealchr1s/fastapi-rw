@@ -1,0 +1,23 @@
+version: '3.9'
+
+networks:
+  apirw:
+    external: false
+
+services:
+  web:
+    build: .
+    command: uvicorn app.main:app --host 0.0.0.0:6666
+    restart: unless-stopped
+    depends_on:
+      - redis
+    ports:
+      - 6666:6666
+    networks:
+      - apirw
+  
+  redis:
+    image: redis
+    restart: unless-stopped
+    networks:
+      - apirw
