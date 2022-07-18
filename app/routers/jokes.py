@@ -2,7 +2,7 @@ from fastapi import APIRouter, status, HTTPException
 
 import json
 import random
-from typing import List, Union
+from typing import List
 
 from ..models import DadJoke
 
